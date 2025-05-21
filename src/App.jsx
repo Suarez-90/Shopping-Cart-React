@@ -1,26 +1,13 @@
-import { Container, Typography } from "@mui/material";
-import { CssBaseline } from "@mui/material";
-import ButtonUsage from "./components/ButtonUsage";
+import { Container } from "@mui/material";
 import ToolBarUsage from "./components/ToolBarUsage";
+import FiltersUsage from "./components/FiltersUsage";
 
 function App() {
   return (
-    <>
-      {/* <CssBaseline /> */}
-      <Container component="main" sx={{ textAlign: "center" }}>        
-        <ToolBarUsage />
-        <Typography
-          variant="h2"
-          component="h1"
-          color="info"
-          sx={{ mt: 3, fontWeight: 300 }}
-        >
-          Shopping Cart React
-        </Typography>
-
-        <ButtonUsage />
-      </Container>
-    </>
+    <Container component="main" sx={{ textAlign: "center", display: "flex", flexDirection:'column', gap:4 }}>
+      <ToolBarUsage />
+      <FiltersUsage />
+    </Container>
   );
 }
 
