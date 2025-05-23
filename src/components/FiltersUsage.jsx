@@ -2,20 +2,17 @@ import { useState } from "react";
 import { Stack, Box, Slider, Typography, Button, FormControl, Select, InputLabel, MenuItem  } from "@mui/material";
 
 function FiltersUsage() {
-  const [age, setAge] = useState("");
-  const [open, setOpen] = useState(false);
+  const [category, setCategory] = useState("all");
+  // const [open, setOpen] = useState(false);
+  const [price, setPrice] = useState(0)
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
   };
-
-  const handleClose = () => {
-    setOpen(false);
+  const handleSelectChange = (event) => {
+    setCategory(event.target.value);
   };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  console.log(category)
 
   return (
     <Stack
@@ -23,48 +20,41 @@ function FiltersUsage() {
       direction="row"
       useFlexGap
       sx={{
-        justifyContent: "space-evenly",
-        alignItems: "center",
+        justifyContent: "space-around",
+        alignItems: "center",      
       }}
     >
-      <Typography id="non-linear-slider" gutterBottom>
-        Price:{/* Storage: {valueLabelFormat(calculateValue(value))} */}
-      </Typography>
-      <Slider
-        // value={value}
-        min={0}
-        step={1}
-        max={100}
-        // scale={calculateValue}
-        // getAriaValueText={valueLabelFormat}
-        // valueLabelFormat={valueLabelFormat}
-        // onChange={handleChange}
-        valueLabelDisplay="auto"
-        aria-labelledby="non-linear-slider"
-        color="secondary"
-      />
-      <Box>
-        <Button sx={{ display: "block", mt: 2 }} onClick={handleOpen}>
-          Open the select
-        </Button>
-        <FormControl sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel id="demo-controlled-open-select-label">Age</InputLabel>
+      <Box width={450} sx={{display:"flex", gap:2, alignContent:"center"}}>
+        <Typography id="non-linear-slider" gutterBottom width={150} mt={0.2} fontWeight={500}>
+          Initial Price:{/* Storage: {valueLabelFormat(calculateValue(value))} */}
+        </Typography>
+        <Slider
+          min={0}
+          step={5}
+          max={1000}          
+          value={price}          
+          onChange={handlePriceChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="non-linear-slider"
+          color="secondary"
+        />
+        <Typography variant="subtitle1"  gutterBottom mt={0.2} width={85} fontWeight={500}>
+          $ {price}{/* Storage: {valueLabelFormat(calculateValue(value))} */}
+        </Typography>
+      </Box>
+      <Box width={200}>        
+        <FormControl color="secondary" fullWidth sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="demo-controlled-open-select-label">Category</InputLabel>
           <Select
             labelId="demo-controlled-open-select-label"
-            id="demo-controlled-open-select"
-            open={open}
-            onClose={handleClose}
-            onOpen={handleOpen}
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            id="demo-controlled-open-select"           
+            value={category}
+            label="Category"
+            onChange={handleSelectChange}
+          >            
+            <MenuItem selected value='all'>All</MenuItem>
+            <MenuItem value='laptops'>Laptops</MenuItem>
+            <MenuItem value='moviles'>Móviles</MenuItem>
           </Select>
         </FormControl>
       </Box>
