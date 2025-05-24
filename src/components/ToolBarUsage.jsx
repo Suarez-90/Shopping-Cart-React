@@ -15,17 +15,17 @@ function ToolBarUsage() {
       <Toolbar variant="regular" sx={{ display: "flex" }}>
         <IconButton
           edge="start"
-          color="secondary"
+          color="info"
           aria-label="menu"
           size="large"
-          sx={{ mr: 1 }}
+          sx={{ mr: 1, fontSize: 100 }}
         >
           <StorefrontIcon />
         </IconButton>
         <Typography
           variant="h6"
           align="left"
-          color="secondary"
+          color="info"
           component="div"
           sx={{ flexGrow: 1, fontWeight: 600 }}
         >
@@ -35,7 +35,7 @@ function ToolBarUsage() {
           variant="h4"
           align="left"
           component="div"
-          color="secondary"
+          color="info"
           sx={{ flexGrow: 1, fontWeight: 600, fontSize: 40 }}
         >
           Welcome to Shopping Cart
@@ -44,7 +44,7 @@ function ToolBarUsage() {
         <IconButton
           size="large"
           aria-label="show 4 new mails"
-          color="secondary"
+          color="info"
         >
           <Badge badgeContent={4} color="error">
             <ShoppingCartIcon />

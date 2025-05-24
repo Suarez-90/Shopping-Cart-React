@@ -26,7 +26,7 @@ function FiltersUsage() {
     >
       <Box width={450} sx={{display:"flex", gap:2, alignContent:"center"}}>
         <Typography id="non-linear-slider" gutterBottom width={150} mt={0.2} fontWeight={500}>
-          Initial Price:{/* Storage: {valueLabelFormat(calculateValue(value))} */}
+          Initial Price:
         </Typography>
         <Slider
           min={0}
@@ -36,18 +36,19 @@ function FiltersUsage() {
           onChange={handlePriceChange}
           valueLabelDisplay="auto"
           aria-labelledby="non-linear-slider"
-          color="secondary"
+          color="info"
         />
         <Typography variant="subtitle1"  gutterBottom mt={0.2} width={85} fontWeight={500}>
           $ {price}{/* Storage: {valueLabelFormat(calculateValue(value))} */}
         </Typography>
       </Box>
       <Box width={200}>        
-        <FormControl color="secondary" fullWidth sx={{ m: 1, minWidth: 120 }}>
+        <FormControl color="info" sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id="demo-controlled-open-select-label">Category</InputLabel>
           <Select
-            labelId="demo-controlled-open-select-label"
-            id="demo-controlled-open-select"           
+            labelId="controlled-open-select-label"
+            id="controlled-open-select"
+            autoWidth          
             value={category}
             label="Category"
             onChange={handleSelectChange}

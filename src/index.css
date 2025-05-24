@@ -1,9 +1,16 @@
-body {  
-  background: linear-gradient(to top,#b99bf5, transparent), url(./assets/shopping-store.jpg);
-  background-size: 100% 100%; 
+/* background: linear-gradient(to bottom, #aobef8, b99bf5); */
+body {
+  background: linear-gradient( to right, #f9e7fe, #dafcfc );
+  background-size: auto; 
   background-repeat: no-repeat;
-  /* background-position: center; */
+  background-position: center;
   /* aspect-ratio: 16/9; */
   min-height: 100dvh;
   /* overflow-y: hidden;  */
 }
+
+/* .truncText {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+} */
