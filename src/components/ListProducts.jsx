@@ -1,8 +1,13 @@
 import Products from './mocks/mocks.json';
 import CardProduct from './CardProduct'
 import Grid from "@mui/material/Grid";
+import useFilter from './hooks/useFilter';
 
 function ListProducts() {
+  const {filterProducts} = useFilter()
+
+  const productsFilters = filterProducts(Products)
+  console.log(productsFilters)
   return (
     <Grid container spacing={0.5}>
       <Grid
@@ -11,7 +16,7 @@ function ListProducts() {
         direction="row"
         sx={{ justifyContent: "start", alignItems: "center", gap: 1.4 }}
       >
-        {Products.map(product => {
+        {productsFilters.map(product => {
            return <CardProduct key={product.id} title={product.title} img={product.image} description={product.description} price={product.price}/>
         })}
         
