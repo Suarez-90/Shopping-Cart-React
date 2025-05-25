@@ -3,10 +3,11 @@ import ToolBarUsage from "./components/ToolBarUsage";
 import FiltersUsage from "./components/FiltersUsage";
 import ListProducts from "./components/ListProducts";
 import { FilterProvider } from "./components/context/filterContext";
+import { CartProvider } from "./components/context/cartContext";
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <Container
         component="main"
         sx={{
@@ -22,7 +23,7 @@ function App() {
           <ListProducts />
         </FilterProvider>
       </Container>
-    </>
+    </CartProvider>
   );
 }
 

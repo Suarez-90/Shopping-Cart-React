@@ -9,10 +9,11 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { Paper, CardHeader, IconButton } from "@mui/material";
 
-function CardProduct({title, img, price, description}) {
 
+function CardProduct({title, img, price, description, handleClick, productInCart }) {  
   const shortTitle = title?.split(" ", 3).join(" ")
 
   return (
@@ -73,13 +74,13 @@ function CardProduct({title, img, price, description}) {
           <Button
             fullWidth
             variant="contained"
-            color="info"
+            color={productInCart ? "error": "info"}
             size="small"
-            startIcon={<AddShoppingCartIcon />}
+            startIcon={productInCart ? <RemoveShoppingCartIcon/>: <AddShoppingCartIcon />}
+            onClick={handleClick}
           >
-            Add to Cart
+            {productInCart ? 'Remove' : 'Add'} to Cart
           </Button>
-          {/* <Button size="small">Learn More</Button> */}
         </CardActions>
       </Card>
     </Paper>
