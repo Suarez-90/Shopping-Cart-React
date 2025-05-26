@@ -29,7 +29,7 @@ function CardProduct({title, img, price, description, handleClick, productInCart
         />
         <CardMedia
           component="img"
-          alt="green iguana"
+          alt="Images no Found"
           height="160"
           src={img}
         />

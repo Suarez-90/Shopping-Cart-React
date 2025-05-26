@@ -14,7 +14,7 @@ import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import CartModalContent from "./CartModalContent";
 
-function CartModal({ open, handleClose, handleClean }) {
+function CartModal({ open, handleClose, handleClean,handleBuy }) {
     
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -25,7 +25,8 @@ function CartModal({ open, handleClose, handleClean }) {
       open={open}
       onClose={handleClose}
       aria-labelledby="responsive-dialog-title"
-      maxWidth="md"
+      maxWidth="xl"
+      disableEscapeKeyDown
     >
       <DialogTitle
         id="responsive-dialog-title"
@@ -63,7 +64,7 @@ function CartModal({ open, handleClose, handleClean }) {
           autoFocus
           variant="contained"
           color="warning"
-          onClick={handleClose}
+          onClick={handleBuy}
           startIcon={<ShoppingCartCheckoutIcon />}
         >
           Buy Products

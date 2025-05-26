@@ -5,21 +5,41 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import CartModal from "./CartModal";
 import useCart from "./hooks/useCart";
+import SnackbarUsage from "./SnackbarUsage";
+import ReactConfetti from "react-confetti";
 
 function ToolBarUsage() {
   const [open, setOpen] = useState(false);
+  const [snack, setSnack] = useState(false)
   const {state, clearCart} = useCart()
   const cartList = state.length
 
   const onHandleClean = ()=>{
+    clearCart();
+    handleCloseModal();
+    
+  }
+  const onHandleBuy = ()=>{
     clearCart()
     handleCloseModal()
+    handleClickSnack()    
   }
   const cartToOpen = () => {
     setOpen(true);
   };
   const handleCloseModal = () => {
     setOpen(false);
+  };
+  const handleClickSnack = () => {
+    setSnack(true);
+  };
+
+  const onHandleCloseSnack = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setSnack(false);
   };
 
   return (
@@ -67,7 +87,9 @@ function ToolBarUsage() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <CartModal open={open} handleClose={handleCloseModal} handleClean={onHandleClean}/>     
+      <CartModal open={open} handleClose={handleCloseModal} handleClean={onHandleClean} handleBuy={onHandleBuy}/>
+      <SnackbarUsage handleCloseSnack={onHandleCloseSnack} open={snack}/>
+      {snack && <ReactConfetti gravity={1}/>}
     </>
   );
 }

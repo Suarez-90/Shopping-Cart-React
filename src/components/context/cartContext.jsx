@@ -13,6 +13,10 @@ export function CartProvider({children}) {
         type: 'ADD_TO_CART',
         product: product
     })
+    const restToQty= (product) => dispatch({
+        type: 'Rest_QTY',
+        product: product
+    })
 
     const removeCart = (id)=> dispatch({
         type:'REMOVE_CART',
@@ -27,6 +31,7 @@ export function CartProvider({children}) {
         state,
         addToCart,
         removeCart,
+        restToQty,
         clearCart
     }}>
         {children}
