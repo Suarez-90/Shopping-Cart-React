@@ -7,7 +7,7 @@ function useCart() {
     const {addToCart,removeCart, clearCart, restToQty, state}= context
     
     if (context ===undefined) {
-        throw new Error("No se puede leer un elemento sin contexto");       
+        throw new Error("No se puede leer un elemento sin contexto CartContext");       
     }
 
     const totalPrice = useCallback((state)=>{

@@ -1,46 +1,34 @@
-import { useState } from "react";
-import { AppBar, Toolbar, IconButton, Typography, Badge } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Badge,
+  Stack,
+} from "@mui/material";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import CartModal from "./CartModal";
-import useCart from "./hooks/useCart";
 import SnackbarUsage from "./SnackbarUsage";
 import ReactConfetti from "react-confetti";
+import useToolBar from "./hooks/useToolBar";
+import useFav from "./hooks/useFav";
 
 function ToolBarUsage() {
-  const [open, setOpen] = useState(false);
-  const [snack, setSnack] = useState(false)
-  const {state, clearCart} = useCart()
-  const cartList = state.length
-
-  const onHandleClean = ()=>{
-    clearCart();
-    handleCloseModal();
-    
-  }
-  const onHandleBuy = ()=>{
-    clearCart()
-    handleCloseModal()
-    handleClickSnack()    
-  }
-  const cartToOpen = () => {
-    setOpen(true);
-  };
-  const handleCloseModal = () => {
-    setOpen(false);
-  };
-  const handleClickSnack = () => {
-    setSnack(true);
-  };
-
-  const onHandleCloseSnack = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setSnack(false);
-  };
+  const {
+    open,
+    snack,
+    cartToOpen,
+    cartList,
+    onHandleBuy,
+    onHandleClean,
+    onHandleCloseSnack,
+    handleCloseModal,
+  } = useToolBar();
+  const { favList } = useFav();
 
   return (
     <>
@@ -74,22 +62,48 @@ function ToolBarUsage() {
             Welcome to Shopping Cart
           </Typography>
 
-          <IconButton
-            size="large"
-            aria-label="show 4 new mails"
-            color="info"
-            onClick={cartToOpen}
-            disabled={cartList<=0}
-          >
-            <Badge badgeContent={cartList } color="error">
-              {cartList>0 ? <ShoppingCartIcon fontSize="70" />: <ShoppingCartOutlinedIcon fontSize="70"/> }
-            </Badge>
-          </IconButton>
+          <Stack direction="row">
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="primary"
+              // onClick={cartToOpen}
+              disabled={favList <= 0}
+            >
+              <Badge badgeContent={favList} color="warning">
+                {favList > 0 ? (
+                  <FavoriteIcon fontSize="70" />
+                ) : (
+                  <FavoriteBorderIcon fontSize="70" />
+                )}
+              </Badge>              
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="info"
+              onClick={cartToOpen}
+              disabled={cartList <= 0}
+            >
+              <Badge badgeContent={cartList} color="error">
+                {cartList > 0 ? (
+                  <ShoppingCartIcon fontSize="70" />
+                ) : (
+                  <ShoppingCartOutlinedIcon fontSize="70" />
+                )}
+              </Badge>
+            </IconButton>
+          </Stack>
         </Toolbar>
       </AppBar>
-      <CartModal open={open} handleClose={handleCloseModal} handleClean={onHandleClean} handleBuy={onHandleBuy}/>
-      <SnackbarUsage handleCloseSnack={onHandleCloseSnack} open={snack}/>
-      {snack && <ReactConfetti gravity={1}/>}
+      <CartModal
+        open={open}
+        handleClose={handleCloseModal}
+        handleClean={onHandleClean}
+        handleBuy={onHandleBuy}
+      />
+      <SnackbarUsage handleCloseSnack={onHandleCloseSnack} open={snack} />
+      {snack && <ReactConfetti gravity={1} numberOfPieces={150} />}
     </>
   );
 }
