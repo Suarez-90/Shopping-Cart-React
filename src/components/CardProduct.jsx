@@ -6,15 +6,24 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { Paper, CardHeader, IconButton } from "@mui/material";
 
-
-function CardProduct({title, img, price, description, handleClick, productInCart }) {  
-  const shortTitle = title?.split(" ", 3).join(" ")
+function CardProduct({
+  title,
+  img,
+  price,
+  description,
+  handleClickCart,
+  productInCart,
+  handleClickFav,
+  favProduct,
+}) {
+  const shortTitle = title?.split(" ", 3).join(" ");
 
   return (
     <Paper sx={{ maxWidth: 230 }} elevation={4}>
@@ -22,10 +31,14 @@ function CardProduct({title, img, price, description, handleClick, productInCart
         <CardHeader
           subheader={shortTitle}
           action={
-            <IconButton color="info" aria-label="add to favorites">
-              <FavoriteBorderIcon />
+            <IconButton
+              color="warning"
+              onClick={handleClickFav}
+              aria-label="add to favorites"
+            >
+              {favProduct ? <FavoriteIcon /> : <FavoriteBorderIcon />}
             </IconButton>
-          }          
+          }
         />
         <CardMedia
           component="img"
@@ -37,7 +50,7 @@ function CardProduct({title, img, price, description, handleClick, productInCart
           <Stack
             direction="row"
             spacing={2}
-            sx={{ justifyContent: "space-between", pb:1 }}
+            sx={{ justifyContent: "space-between", pb: 1 }}
           >
             <Typography
               noWrap
@@ -74,12 +87,18 @@ function CardProduct({title, img, price, description, handleClick, productInCart
           <Button
             fullWidth
             variant="contained"
-            color={productInCart ? "error": "info"}
+            color={productInCart ? "error" : "info"}
             size="small"
-            startIcon={productInCart ? <RemoveShoppingCartIcon/>: <AddShoppingCartIcon />}
-            onClick={handleClick}
+            startIcon={
+              productInCart ? (
+                <RemoveShoppingCartIcon />
+              ) : (
+                <AddShoppingCartIcon />
+              )
+            }
+            onClick={handleClickCart}
           >
-            {productInCart ? 'Remove' : 'Add'} to Cart
+            {productInCart ? "Remove" : "Add"} to Cart
           </Button>
         </CardActions>
       </Card>

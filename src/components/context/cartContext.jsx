@@ -7,7 +7,7 @@ const INITIAL_STATE = []
 
 export function CartProvider({children}) {
     const [state, dispatch] = useReducer(CartReducer, INITIAL_STATE)
-    console.log(state)
+    
     
     const addToCart= (product) => dispatch({
         type: 'ADD_TO_CART',

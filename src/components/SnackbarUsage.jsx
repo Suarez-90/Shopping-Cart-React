@@ -4,7 +4,7 @@ import AlertTitle from "@mui/material/AlertTitle";
 
 function SnackbarUsage({handleCloseSnack, open}) {
   return (
-    <Snackbar open={open} autoHideDuration={4000} onClose={handleCloseSnack}>      
+    <Snackbar open={open} autoHideDuration={3000} onClose={handleCloseSnack}>      
       <Alert
         onClose={handleCloseSnack}
         severity="success"
