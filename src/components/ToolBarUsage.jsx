@@ -65,12 +65,12 @@ function ToolBarUsage() {
           <Stack direction="row">
             <IconButton
               size="large"
-              aria-label="show 4 new mails"
-              color="primary"
+              aria-label="show favorite product"
+              color="info"
               // onClick={cartToOpen}
               disabled={favList <= 0}
             >
-              <Badge badgeContent={favList} color="warning">
+              <Badge badgeContent={favList} color="secondary">
                 {favList > 0 ? (
                   <FavoriteIcon fontSize="70" />
                 ) : (
@@ -85,7 +85,7 @@ function ToolBarUsage() {
               onClick={cartToOpen}
               disabled={cartList <= 0}
             >
-              <Badge badgeContent={cartList} color="error">
+              <Badge badgeContent={cartList} color="warning">
                 {cartList > 0 ? (
                   <ShoppingCartIcon fontSize="70" />
                 ) : (

@@ -32,7 +32,7 @@ function CardProduct({
           subheader={shortTitle}
           action={
             <IconButton
-              color="warning"
+              color="secondary"
               onClick={handleClickFav}
               aria-label="add to favorites"
             >
