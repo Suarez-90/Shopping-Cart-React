@@ -15,7 +15,8 @@ import CartModal from "./CartModal";
 import SnackbarUsage from "./SnackbarUsage";
 import ReactConfetti from "react-confetti";
 import useToolBar from "./hooks/useToolBar";
-import useFav from "./hooks/useFav";
+
+import FavModal from "./favModal";
 
 function ToolBarUsage() {
   const {
@@ -27,8 +28,13 @@ function ToolBarUsage() {
     onHandleClean,
     onHandleCloseSnack,
     handleCloseModal,
+    favList,
+    openfav,
+    onHandleCleanFav,
+    favToOpen,
+    handleCloseFav
   } = useToolBar();
-  const { favList } = useFav();
+  
 
   return (
     <>
@@ -67,7 +73,7 @@ function ToolBarUsage() {
               size="large"
               aria-label="show favorite product"
               color="info"
-              // onClick={cartToOpen}
+              onClick={favToOpen}
               disabled={favList <= 0}
             >
               <Badge badgeContent={favList} color="secondary">
@@ -102,6 +108,7 @@ function ToolBarUsage() {
         handleClean={onHandleClean}
         handleBuy={onHandleBuy}
       />
+      <FavModal openFav={openfav} handleClose={handleCloseFav} handleRemoveFav={onHandleCleanFav}/>
       <SnackbarUsage handleCloseSnack={onHandleCloseSnack} open={snack} />
       {snack && <ReactConfetti gravity={1} numberOfPieces={150} />}
     </>

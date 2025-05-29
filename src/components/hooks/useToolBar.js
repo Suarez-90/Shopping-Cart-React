@@ -1,11 +1,14 @@
 import {useState } from 'react'
 import useCart from './useCart';
+import useFav from './useFav';
 
 
 function useToolBar() {
     const [open, setOpen] = useState(false);
     const [snack, setSnack] = useState(false);
+    const [openfav, setOpenFav]= useState(false)
     const { state, clearCart } = useCart();
+    const { favList, clean_fav } = useFav();
     
     
     const cartList = state.length;
@@ -25,6 +28,18 @@ function useToolBar() {
     const handleCloseModal = () => {
         setOpen(false);
     };
+    
+    const favToOpen = () => {
+        setOpenFav(true)
+    }
+    const handleCloseFav = () => {
+        setOpenFav(false);
+    };
+    const onHandleCleanFav = () => {
+        clean_fav()
+        handleCloseFav()
+    }
+
     const handleClickSnack = () => {
         setSnack(true);
     };
@@ -36,7 +51,7 @@ function useToolBar() {
         setSnack(false);
     };
 
-    return {open, snack, cartList, onHandleBuy, onHandleClean, cartToOpen, onHandleCloseSnack, handleCloseModal }
+    return {open, snack,openfav,favList, onHandleCleanFav, favToOpen, handleCloseFav, cartList, onHandleBuy, onHandleClean, cartToOpen, onHandleCloseSnack, handleCloseModal }
 }
 
 export default useToolBar

@@ -4,7 +4,7 @@ import { FavContext } from "../context/favContext";
 
 function useFav() {
     const context = useContext(FavContext);
-    const { fav, add_fav, remove_fav} = context
+    const { fav, add_fav, remove_fav, clean_fav} = context
     const favList = fav.length
 
     if (context===undefined) {
@@ -13,7 +13,7 @@ function useFav() {
     }
     
 
-  return { fav, add_fav, favList , remove_fav}
+  return { fav, add_fav, favList , remove_fav,clean_fav}
 }
 
 export default useFav

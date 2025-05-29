@@ -14,20 +14,9 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import useCart from "./hooks/useCart";
 
-// function totalPrice(items) {
-//   return items.map(({price,quantity})=> price*quantity)?.reduce((acc, val)=> acc+val)
-// }
 
 function CartModalContent() {
-  const { removeCart, restToQty, state, addToCart, totalPrice } = useCart();
-
-  // const ccyFormat = (num) => {
-  //   return `${num.toFixed(2)}`;
-  // };
-
-  // const priceRow = (qty, unit) => {
-  //   return qty * unit;
-  // };
+  const { removeCart, restToQty, state, addToCart, totalPrice } = useCart(); 
 
   return (
     <TableContainer component={Paper}>
@@ -99,12 +88,7 @@ function CartModalContent() {
             <TableCell align="right" sx={{ fontSize: 18, fontWeight: 600 }}>
               ${state.length>0 && totalPrice(state).toFixed(2)}
             </TableCell>
-          </TableRow>
-          {/* <TableRow>
-            <TableCell rowSpan={3} />
-            <TableCell colSpan={2}>Total</TableCell>
-            <TableCell align="right">{ccyFormat(50.524)}</TableCell>
-          </TableRow> */}
+          </TableRow>       
         </TableBody>
       </Table>
     </TableContainer>

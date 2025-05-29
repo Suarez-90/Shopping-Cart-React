@@ -9,8 +9,9 @@ function ListProducts() {
   const { filterProducts } = useFilter();
   const { addToCart, removeCart, state } = useCart();
   const { fav, add_fav, remove_fav } = useFav();
-  console.log({fav})
+  
   const productsFilters = filterProducts(Products);
+
   return (
     <Grid container spacing={0.5}>
       <Grid
