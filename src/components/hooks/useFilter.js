@@ -1,4 +1,3 @@
-import React from 'react'
 import { useContext } from 'react'
 import { FilterContext } from '../context/filterContext';
 
@@ -19,12 +18,15 @@ function useFilter() {
                     filter.category === 'all'
                 )
             )
-            })
-        
+        })        
+    }
+
+    const filterMoreRate = (product) =>{
+        return product.filter(prod=> prod.rating.rate >= 3.5)
     }
     
 
-  return {filter, setFilter, filterProducts}
+  return {filter, setFilter, filterProducts, filterMoreRate}
 }
 
 export default useFilter

@@ -8,6 +8,7 @@ import {
   TableBody,
   IconButton,
   ButtonGroup,
+  Avatar
 } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -32,7 +33,7 @@ function CartModalContent() {
             <TableCell align="right">Price</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Desc</TableCell>
+            <TableCell>Description</TableCell>
             <TableCell align="right">Qty.</TableCell>
             <TableCell align="right">Unit</TableCell>
             <TableCell align="right">Sum</TableCell>
@@ -43,7 +44,14 @@ function CartModalContent() {
         <TableBody>
           {state.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.title.split(" ", 5).join(" ")}</TableCell>
+              <TableCell sx={{display:"flex", alignItems:"center",gap:2}}>
+                <Avatar
+                    alt={row.title}
+                    src={row.image}
+                    sx={{ width: 48, height: 48 }}
+                  />
+                  {row.title.split(" ", 5).join(" ")}
+              </TableCell>
               <TableCell align="right">{row.quantity}</TableCell>
               <TableCell align="right">${(row.price).toFixed(2)}</TableCell>
               <TableCell align="right">

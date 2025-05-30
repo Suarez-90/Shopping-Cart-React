@@ -56,7 +56,7 @@ function FavModal({openFav, handleClose, handleRemoveFav }) {
               size="large"              
               onClick={handleRemoveFav}
             >
-              <ClearAllIcon fontSize="inherit" color="secondary" />
+              <ClearAllIcon fontSize="inherit" color="error" />
               {/* <RemoveShoppingCartIcon color="error" fontSize="inherit" /> */}
             </IconButton>
           </Stack>

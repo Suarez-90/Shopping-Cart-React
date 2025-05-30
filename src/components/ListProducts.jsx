@@ -4,13 +4,16 @@ import Grid from "@mui/material/Grid";
 import useFilter from "./hooks/useFilter";
 import useCart from "./hooks/useCart";
 import useFav from "./hooks/useFav";
+import ItemsListRate from "./ItemsListRate";
+
 
 function ListProducts() {
-  const { filterProducts } = useFilter();
+  const { filterProducts, filterMoreRate } = useFilter();
   const { addToCart, removeCart, state } = useCart();
   const { fav, add_fav, remove_fav } = useFav();
   
   const productsFilters = filterProducts(Products);
+  const productsFiltersRate = filterMoreRate(Products)
 
   return (
     <Grid container spacing={0.5}>
@@ -39,7 +42,9 @@ function ListProducts() {
           );
         })}
       </Grid>
-      <Grid size={2} sx={{ border: 0.5 }}></Grid>
+      <Grid size={2} >        
+       <ItemsListRate productRate={productsFiltersRate}/>
+      </Grid>
     </Grid>
   );
 }

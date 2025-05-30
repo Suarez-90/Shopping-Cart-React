@@ -26,7 +26,7 @@ function CardProduct({
   const shortTitle = title?.split(" ", 3).join(" ");
 
   return (
-    <Paper sx={{ maxWidth: 230 }} elevation={4}>
+    <Paper sx={{ maxWidth: 230 }} elevation={6}>
       <Card sx={{ backgroundColor: "#dafcfc" }}>
         <CardHeader
           subheader={shortTitle}
