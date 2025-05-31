@@ -22,7 +22,7 @@ function useFilter() {
     }
 
     const filterMoreRate = (product) =>{
-        return product.filter(prod=> prod.rating.rate >= 3.5)
+        return product.filter(prod=> prod.rating.rate >= 4)
     }
     
 

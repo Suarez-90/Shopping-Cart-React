@@ -10,9 +10,11 @@ import {
   MenuItem,
 } from "@mui/material";
 import useFilter from "./hooks/useFilter";
+import { useId } from "react";
 
 function FiltersUsage() {
   const {filter, setFilter } = useFilter();
+  const labelId = useId();
 
   const handlePriceChange = (event) => {
     setFilter({... filter,price: event.target.value});
@@ -63,12 +65,12 @@ function FiltersUsage() {
       </Box>
       <Box width={200}>
         <FormControl color="info" sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel id="demo-controlled-open-select-label">
+          <InputLabel id={labelId}>
             Category
           </InputLabel>
           <Select
-            labelId="controlled-open-select-label"
-            id="controlled-open-select"
+            labelId={labelId}
+            id="select category"
             autoWidth
             value={filter.category}
             label="Category"

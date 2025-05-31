@@ -30,6 +30,7 @@ function CardProduct({
       <Card sx={{ backgroundColor: "#dafcfc" }}>
         <CardHeader
           subheader={shortTitle}
+          sx={{height:70}}
           action={
             <IconButton
               color="secondary"
@@ -50,7 +51,7 @@ function CardProduct({
           <Stack
             direction="row"
             spacing={2}
-            sx={{ justifyContent: "space-between", pb: 1 }}
+            sx={{ justifyContent: "start", pb: 1 }}
           >
             <Typography
               noWrap
@@ -62,9 +63,12 @@ function CardProduct({
               ${price}
             </Typography>
             <Rating
-              name="half-rating"
+              emptyLabelText
+              readOnly
+              name="rating-product"
               defaultValue={1.5}
               precision={0.5}
+              size="medium"
               sx={{ pb: 0.3, justifyContent: "end" }}
             />
           </Stack>

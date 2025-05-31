@@ -1,12 +1,15 @@
-import { Container } from "@mui/material";
+import { Container, Backdrop, CircularProgress } from "@mui/material";
 import ToolBarUsage from "./components/ToolBarUsage";
 import FiltersUsage from "./components/FiltersUsage";
 import ListProducts from "./components/ListProducts";
 import { FilterProvider } from "./components/context/filterContext";
 import { CartProvider } from "./components/context/cartContext";
 import { FavProvider } from "./components/context/favContext";
+import { getProducts } from "./services/Products";
+import { Suspense } from "react";
 
 function App() {
+  const listProduct = getProducts();
   return (
     <CartProvider>
       <FavProvider>
@@ -22,7 +25,22 @@ function App() {
           <ToolBarUsage />
           <FilterProvider>
             <FiltersUsage />
-            <ListProducts />
+            <Suspense
+              fallback={
+                <Backdrop
+                  sx={(theme) => ({
+                    color: "#fff",
+                    zIndex: theme.zIndex.drawer + 1,
+                  })}
+                  open={true}
+                  // onClick={handleClose}
+                >
+                  <CircularProgress size={60} color="warning" />
+                </Backdrop>
+              }
+            >
+              <ListProducts products={listProduct} />
+            </Suspense>
           </FilterProvider>
         </Container>
       </FavProvider>
