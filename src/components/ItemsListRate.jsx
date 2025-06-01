@@ -14,25 +14,25 @@ function ItemsListRate({ productRate }) {
   const colorTitle = theme.palette.warning.light;
   return (
     <Paper elevation={6}>
-      <List sx={{ width: "100%", maxWidth: 360, backgroundColor: "#dafcfc" }}>
+      <List sx={{ width: "100%", backgroundColor: "#dafcfc" }}>
         <Typography
           variant="h6"
           align="center"
           color={colorTitle}
           component="div"
-          sx={{ fontWeight: 600 }}
+          sx={{ fontWeight: 600 , textDecoration:'underline' }}
         >
           MORE RATE
         </Typography>
         {productRate.map((item, index) => {
           return (
-            <Box key={item.id}>
-              <ListItem alignItems="flex-start">
+            <Box key={item.id} display={'flex'} minWidth={'175'}>
+              <ListItem >
                 <ListItemAvatar>
                   <Avatar
                     alt={item.title}
                     src={item.image}
-                    sx={{ width: 48, height: 48 }}
+                    sx={{xs:{width: 58, height: 58}, md:{width: 48, height: 48} }}
                   />
                 </ListItemAvatar>
                 <ListItemText

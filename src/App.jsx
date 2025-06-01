@@ -19,7 +19,10 @@ function App() {
             textAlign: "center",
             display: "flex",
             flexDirection: "column",
-            gap: 3,
+            alignItems:"center",
+            gap: 1,
+            // minWidth: 450,
+            minHeight: '100dvh'
           }}
         >
           <ToolBarUsage />
@@ -39,7 +42,7 @@ function App() {
                 </Backdrop>
               }
             >
-              <ListProducts products={listProduct} />
+              <ListProducts products={listProduct}/>
             </Suspense>
           </FilterProvider>
         </Container>

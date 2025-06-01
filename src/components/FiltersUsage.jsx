@@ -25,19 +25,20 @@ function FiltersUsage() {
 
   return (
     <Stack
-      spacing={{ xs: 2, sm: 2 }}
-      direction="row"
+      width={{xs:'450px',md: 'auto'}}
+      spacing={{ xs: 1, sm: 2 }}
+      direction={{xs:'column', md:"row"}}
       useFlexGap
       sx={{
-        justifyContent: "space-around",
-        alignItems: "center",
+        justifyContent: {xs: 'center',md:"space-around"},
+        alignItems: "center",        
       }}
     >
-      <Box width={450} sx={{ display: "flex", gap: 2, alignContent: "center" }}>
+      <Box width={{xs:350, md: 450}} sx={{ display: "flex", gap: {xs: 1, md: 2}, alignItems: "center" }}>
         <Typography
           id="non-linear-slider"
           gutterBottom
-          width={150}
+          width={{xs:200 ,md:250}}
           mt={0.2}
           fontWeight={500}
         >
@@ -63,8 +64,8 @@ function FiltersUsage() {
           $ {filter.price}
         </Typography>
       </Box>
-      <Box width={200}>
-        <FormControl color="info" sx={{ m: 1, minWidth: 120 }}>
+      <Box>
+        <FormControl color="info" sx={{ m: 1, minWidth:{xs:250, md:200} }}>
           <InputLabel id={labelId}>
             Category
           </InputLabel>

@@ -14,38 +14,37 @@ function ListProducts({products}) {
   const { fav, add_fav, remove_fav } = useFav();
   const productsApi = use(products)
   
-  
   const productsFilters = filterProducts(productsApi)
   const productsFiltersRate = filterMoreRate(productsApi)
 
   return (
-    <Grid container spacing={0.5}>
+    <Grid container spacing={0.5} sx={{flex:'1 0 auto', display:'flex', flexDirection:{xs:'column', md: 'row'}, alignContent:{xs:'center'}}}>
       <Grid
-        size={10}
+        size={{xs:12 ,md:10}}
         container
         direction="row"        
-        sx={{ justifyContent: "start", alignItems: "start", gap: 1.4}}
+        sx={{ justifyContent: "center", alignItems: "start", gap: 1}}
       >
         {productsFilters.map((product) => {
           const productInCart = state.findIndex((item) => item.id === product.id)>=0;
           const productInFav = fav?.some(item=> item.id === product.id);
-
-          return (
-            <CardProduct
-              key={product.id}
-              title={product.title}
-              img={product.image}
-              description={product.description}
-              price={product.price}
-              productInCart={productInCart}
-              handleClickCart={productInCart ? ()=>removeCart(product.id) : () => addToCart(product) }
-              favProduct={productInFav}
-              handleClickFav={productInFav? ()=>remove_fav(product.id): ()=>add_fav(product)}
-            />
-          );
+          
+            return (
+              <CardProduct
+                key={product.id}
+                title={product.title}
+                img={product.image}
+                description={product.description}
+                price={product.price}
+                productInCart={productInCart}
+                handleClickCart={productInCart ? ()=>removeCart(product.id) : () => addToCart(product) }
+                favProduct={productInFav}
+                handleClickFav={productInFav? ()=>remove_fav(product.id): ()=>add_fav(product)}
+              />
+            );
         })}
       </Grid>
-      <Grid size={2} >        
+      <Grid size={{xs:12,sm:10 ,md:2}} alignSelf={{xs:'center', md:'flex-start'}} >        
        <ItemsListRate productRate={productsFiltersRate}/>
       </Grid>
     </Grid>

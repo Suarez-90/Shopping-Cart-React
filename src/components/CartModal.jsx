@@ -18,7 +18,7 @@ function CartModal({ open, handleClose, handleClean,handleBuy }) {
     
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-
+  console.log(fullScreen)
   return (
     <Dialog
       fullScreen={fullScreen}

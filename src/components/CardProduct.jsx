@@ -21,16 +21,16 @@ function CardProduct({
   handleClickCart,
   productInCart,
   handleClickFav,
-  favProduct,
+  favProduct  
 }) {
   const shortTitle = title?.split(" ", 3).join(" ");
 
   return (
-    <Paper sx={{ maxWidth: 230 }} elevation={6}>
+    <Paper sx={{ maxWidth:{xs:180 , md:230} }} elevation={6}>
       <Card sx={{ backgroundColor: "#dafcfc" }}>
         <CardHeader
           subheader={shortTitle}
-          sx={{height:70}}
+          sx={{height:65}}
           action={
             <IconButton
               color="secondary"
@@ -44,7 +44,7 @@ function CardProduct({
         <CardMedia
           component="img"
           alt="Images no Found"
-          height="160"
+          height="150"
           src={img}
         />
         <CardContent sx={{ textAlign: "left", maxHeight: 170 }}>
@@ -100,6 +100,7 @@ function CardProduct({
                 <AddShoppingCartIcon />
               )
             }
+            sx={{marginTop:-2}}
             onClick={handleClickCart}
           >
             {productInCart ? "Remove" : "Add"} to Cart

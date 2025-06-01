@@ -1,6 +1,12 @@
 export async function getProducts() {
-    const response = await fetch('https://fakestoreapi.com/products');
-    return await response.json(); 
+    try {
+        const response = await fetch('https://fakestoreapi.com/products');
+        const data = await response.json();
+        return data
+    } catch (error) {
+        throw new Error ('An error occurred while fetching data.'+ error);
+    }
+            
+}
 
     
-}

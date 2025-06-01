@@ -38,7 +38,7 @@ function ToolBarUsage() {
 
   return (
     <>
-      <AppBar position="static" color="transparent">
+      <AppBar position="static" color="transparent" sx={{minWidth: '450'}}>
         <Toolbar variant="regular" sx={{ display: "flex" }}>
           <IconButton
             edge="start"
@@ -54,16 +54,16 @@ function ToolBarUsage() {
             align="left"
             color="info"
             component="div"
-            sx={{ flexGrow: 1, fontWeight: 600 }}
+            sx={{ flexBasis: 'auto', fontWeight: {sm:400, md:600 } }}
           >
             STORE
           </Typography>
           <Typography
             variant="h4"
-            align="left"
+            align="center"
             component="div"
             color="info"
-            sx={{ flexGrow: 1, fontWeight: 600, fontSize: 40 }}
+            sx={{ flexGrow: 1, fontWeight: 600, fontSize:{xs: 20, md: 40}  }}
           >
             Welcome to Shopping Cart
           </Typography>
