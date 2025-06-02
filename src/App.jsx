@@ -20,8 +20,7 @@ function App() {
             display: "flex",
             flexDirection: "column",
             alignItems:"center",
-            gap: 1,
-            // minWidth: 450,
+            gap: 1.5,
             minHeight: '100dvh'
           }}
         >
@@ -36,9 +35,8 @@ function App() {
                     zIndex: theme.zIndex.drawer + 1,
                   })}
                   open={true}
-                  // onClick={handleClose}
                 >
-                  <CircularProgress size={60} color="warning" />
+                  <CircularProgress size={60} color="info" />
                 </Backdrop>
               }
             >

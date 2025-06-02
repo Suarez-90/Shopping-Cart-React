@@ -18,7 +18,7 @@ function ListProducts({products}) {
   const productsFiltersRate = filterMoreRate(productsApi)
 
   return (
-    <Grid container spacing={0.5} sx={{flex:'1 0 auto', display:'flex', flexDirection:{xs:'column', md: 'row'}, alignContent:{xs:'center'}}}>
+    <Grid container spacing={0.5} sx={{flex:'1 0 auto', display:'flex', flexDirection:{md:'column', lg: 'row'}, alignContent:{xs:'center'}}}>
       <Grid
         size={{xs:12 ,md:10}}
         container
@@ -44,7 +44,7 @@ function ListProducts({products}) {
             );
         })}
       </Grid>
-      <Grid size={{xs:12,sm:10 ,md:2}} alignSelf={{xs:'center', md:'flex-start'}} >        
+      <Grid size={{xs:12,md:10 ,lg:2}} minWidth={180} alignSelf={{xs:'center',md:'center', lg:'flex-start'}} >        
        <ItemsListRate productRate={productsFiltersRate}/>
       </Grid>
     </Grid>

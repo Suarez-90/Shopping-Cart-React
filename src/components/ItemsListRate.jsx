@@ -26,7 +26,7 @@ function ItemsListRate({ productRate }) {
         </Typography>
         {productRate.map((item, index) => {
           return (
-            <Box key={item.id} display={'flex'} minWidth={'175'}>
+            <Box key={item.id} display={'flex'} flexDirection={'column'} minWidth={180}>
               <ListItem >
                 <ListItemAvatar>
                   <Avatar
