@@ -15,8 +15,7 @@ import CartModal from "./CartModal";
 import SnackbarUsage from "./SnackbarUsage";
 import ReactConfetti from "react-confetti";
 import useToolBar from "./hooks/useToolBar";
-
-import FavModal from "./favModal";
+import FavModal from "./FavModal";
 
 function ToolBarUsage() {
   const {
