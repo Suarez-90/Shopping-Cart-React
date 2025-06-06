@@ -16,6 +16,8 @@ import SnackbarUsage from "./SnackbarUsage";
 import ReactConfetti from "react-confetti";
 import useToolBar from "./hooks/useToolBar";
 import FavModal from "./FavModal";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function ToolBarUsage() {
   const {
@@ -31,20 +33,22 @@ function ToolBarUsage() {
     openfav,
     onHandleCleanFav,
     favToOpen,
-    handleCloseFav
+    handleCloseFav,
   } = useToolBar();
-  
+
+  const theme = useTheme()
+  const smallIcon = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
     <>
-      <AppBar position="static" color="transparent" sx={{minWidth: '450'}}>
+      <AppBar position="static" color="transparent" sx={{ minWidth: "450" }}>
         <Toolbar variant="regular" sx={{ display: "flex" }}>
           <IconButton
             edge="start"
             color="info"
             aria-label="menu"
             size="large"
-            sx={{ mr: 1, fontSize: 100 }}
+            sx={{ mr: { xs: 0.2, md: 1 }, fontSize: 100 }}
           >
             <StorefrontIcon />
           </IconButton>
@@ -53,7 +57,7 @@ function ToolBarUsage() {
             align="left"
             color="info"
             component="div"
-            sx={{ flexBasis: 'auto', fontWeight: {sm:400, md:600 } }}
+            sx={{ flexBasis: "auto", fontWeight: { sm: 400, md: 600 } }}
           >
             STORE
           </Typography>
@@ -62,14 +66,14 @@ function ToolBarUsage() {
             align="center"
             component="div"
             color="info"
-            sx={{ flexGrow: 1, fontWeight: 600, fontSize:{xs: 20, md: 40}  }}
+            sx={{ flexGrow: 1, fontWeight: 600, fontSize: { xs: 20, md: 40 } }}
           >
             Welcome to Shopping Cart
           </Typography>
 
           <Stack direction="row">
             <IconButton
-              size="large"
+              size={smallIcon ? "small":"large"}
               aria-label="show favorite product"
               color="info"
               onClick={favToOpen}
@@ -81,10 +85,10 @@ function ToolBarUsage() {
                 ) : (
                   <FavoriteBorderIcon fontSize="70" />
                 )}
-              </Badge>              
+              </Badge>
             </IconButton>
             <IconButton
-              size="large"
+              size={smallIcon ? "small":"large"}
               aria-label="show 4 new mails"
               color="info"
               onClick={cartToOpen}
@@ -107,7 +111,11 @@ function ToolBarUsage() {
         handleClean={onHandleClean}
         handleBuy={onHandleBuy}
       />
-      <FavModal openFav={openfav} handleClose={handleCloseFav} handleRemoveFav={onHandleCleanFav}/>
+      <FavModal
+        openFav={openfav}
+        handleClose={handleCloseFav}
+        handleRemoveFav={onHandleCleanFav}
+      />
       <SnackbarUsage handleCloseSnack={onHandleCloseSnack} open={snack} />
       {snack && <ReactConfetti gravity={1} numberOfPieces={150} />}
     </>
