@@ -84,6 +84,7 @@ function FiltersUsage() {
               All
             </MenuItem>
             <MenuItem value="electronics">Electronics</MenuItem>
+            <MenuItem value="jewelery">Jewelery </MenuItem>
             <MenuItem value="men's clothing">Men's Clothing</MenuItem>
             <MenuItem value="women's clothing">Women's Clothing</MenuItem>
           </Select>

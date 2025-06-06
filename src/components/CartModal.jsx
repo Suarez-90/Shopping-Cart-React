@@ -39,7 +39,7 @@ function CartModal({ open, handleClose, handleClean,handleBuy }) {
             alignItems: "center",
           }}
         >
-          <Typography sx={{ fontSize: 25, fontWeight: 600 }}>
+          <Typography sx={{ fontSize: {xs: 20, md: 25}, fontWeight: 600 }}>
             {"Products in the Cart"}
           </Typography>
           <Stack
@@ -59,7 +59,7 @@ function CartModal({ open, handleClose, handleClean,handleBuy }) {
       <DialogContent sx={{ mt: 1, flexGrow:0 }}>
         <CartModalContent />
       </DialogContent>
-      <DialogActions sx={{pr:{xs:5}}}>
+      <DialogActions sx={{pr:{xs:3}}}>
         <Button
           autoFocus
           variant="contained"
