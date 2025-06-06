@@ -1,4 +1,5 @@
-// import imagen from "../assets/shopping-store.jpg";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -21,16 +22,20 @@ function CardProduct({
   handleClickCart,
   productInCart,
   handleClickFav,
-  favProduct  
+  favProduct,
 }) {
+  const theme = useTheme();
+  const query = useMediaQuery(theme.breakpoints.down("md"));
+
+
   const shortTitle = title?.split(" ", 3).join(" ");
 
   return (
-    <Paper sx={{ maxWidth:{xs:180 , md:230} }} elevation={6}>
+    <Paper sx={{ maxWidth: { xs: 160, md: 230 } }} elevation={6}>
       <Card sx={{ backgroundColor: "#dafcfc" }}>
         <CardHeader
           subheader={shortTitle}
-          sx={{height:65}}
+          sx={{ height: 65 }}
           action={
             <IconButton
               color="secondary"
@@ -44,14 +49,14 @@ function CardProduct({
         <CardMedia
           component="img"
           alt="Images no Found"
-          height="150"
+          height="120"
           src={img}
         />
         <CardContent sx={{ textAlign: "left", maxHeight: 170 }}>
           <Stack
             direction="row"
             spacing={2}
-            sx={{ justifyContent: "start", pb: 1 }}
+            sx={{ justifyContent: {xs: "center",md:"start"}, flexWrap:'wrap', pb:{xs: 0.5, md:1} }}
           >
             <Typography
               noWrap
@@ -68,13 +73,14 @@ function CardProduct({
               name="rating-product"
               defaultValue={1.5}
               precision={0.5}
-              size="medium"
-              sx={{ pb: 0.3, justifyContent: "end" }}
+              size={query ? "small" : "medium"}
+              sx={{ mb:{xs:0}, justifyContent: "end" }}
             />
           </Stack>
           <Typography
             className="truncText"
-            variant="body2"
+            textAlign={{xs:'center', md: 'left'}}            
+            variant={query? "caption": "body2"}
             sx={{
               color: "text.secondary",
               minHeight: 50,
@@ -100,7 +106,7 @@ function CardProduct({
                 <AddShoppingCartIcon />
               )
             }
-            sx={{marginTop:-2}}
+            sx={{ marginTop: -2 }}
             onClick={handleClickCart}
           >
             {productInCart ? "Remove" : "Add"} to Cart

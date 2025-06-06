@@ -1,9 +1,10 @@
 /* background: linear-gradient(to bottom, #aobef8, b99bf5); */
 body {
   background: linear-gradient( to right, #f9e7fe, #dafcfc );
-  background-size: auto; 
+  background-size: cover; 
   background-repeat: no-repeat;
   background-position: center;
-  min-height: 100dvh;  
-  min-width: 450px;
+  min-height: 100dvh;
+  width: 100%;  
+  min-width: 350px;
 }

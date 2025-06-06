@@ -3,18 +3,21 @@ import {
   Box,
   Slider,
   Typography,
-  Button,
   FormControl,
   Select,
   InputLabel,
   MenuItem,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import useFilter from "./hooks/useFilter";
 import { useId } from "react";
 
 function FiltersUsage() {
   const {filter, setFilter } = useFilter();
   const labelId = useId();
+  const theme = useTheme()
+  const xs = useMediaQuery(theme.breakpoints.down("md"))
 
   const handlePriceChange = (event) => {
     setFilter({... filter,price: event.target.value});
@@ -65,7 +68,7 @@ function FiltersUsage() {
         </Typography>
       </Box>
       <Box>
-        <FormControl color="info" sx={{ m: 1, minWidth:{xs:250, md:200} }}>
+        <FormControl size={xs? "small" :"medium"} color="info" sx={{ m: 1, minWidth:{xs:200, md:200}}}>
           <InputLabel id={labelId}>
             Category
           </InputLabel>
