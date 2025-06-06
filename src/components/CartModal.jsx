@@ -51,15 +51,15 @@ function CartModal({ open, handleClose, handleClean,handleBuy }) {
           >
             <Typography color="error">{"CLEAN"}</Typography>
             <IconButton aria-label="remove" size="large" onClick={handleClean}>
-              <RemoveShoppingCartIcon color="error" fontSize="inherit" />
+              <RemoveShoppingCartIcon color="error" fontSize="inherit" sx={{mr:{xs:2}}} />
             </IconButton>
           </Stack>
         </Stack>
       </DialogTitle>
-      <DialogContent sx={{ mt: 1 }}>
+      <DialogContent sx={{ mt: 1, flexGrow:0 }}>
         <CartModalContent />
       </DialogContent>
-      <DialogActions>
+      <DialogActions sx={{pr:{xs:5}}}>
         <Button
           autoFocus
           variant="contained"

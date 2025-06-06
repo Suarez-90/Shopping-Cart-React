@@ -22,7 +22,7 @@ function CartModalContent() {
   return (
     <TableContainer component={Paper}>
       <Table
-        sx={{ minWidth: 1000, backgroundColor: "#dafcfc" }}
+        sx={{ minWidth:{xs:700, md: 1000}, backgroundColor: "#dafcfc" }}
         aria-label="spanning table"
       >
         <TableHead>
